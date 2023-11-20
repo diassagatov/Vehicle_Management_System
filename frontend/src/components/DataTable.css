@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;600&display=swap');
+
+:root{
+    --lightblue:#e3ebf2;
+    --skyblue: #6da7cc;
+    --blue: #345e7d;
+    --darkblue:#2b4257;
+}
+
+.innerContainer{
+    padding: 15px 44px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    font-family: 'Kulim Park', sans-serif;
+    overflow: auto;
+    font-size: 1em;
+    max-height: 600px;
+}
+
+.custom-colored-table td {
+    border-bottom: 2px solid var(--skyblue);
+    color: var(--darkblue);
+    font-weight: 400;
+    max-width: 166px;
+}
+
+.custom-colored-table thead>tr>th {
+    color: var(--blue);
+    font-weight: 300;
+    border: none;
+}
+
+h1{
+    color: var(--darkblue);
+    font-family: 'Kulim Park', sans-serif;
+    font-weight: 600;
+}
+
+
+
+

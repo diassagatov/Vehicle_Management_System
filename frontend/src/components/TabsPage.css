@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;600&display=swap');
+
+:root{
+    --lightblue:#e3ebf2;
+    --skyblue: #6da7cc;
+    --blue: #345e7d;
+    --darkblue:#2b4257;
+}
+
+.navBarCustom{
+    font-family: 'Kulim Park', sans-serif;   
+}
+
+.tabContent{
+    background-color: var(--lightblue);
+    min-height: 100vh;
+    font-size: 12px;
+    overflow-x: hidden;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--darkblue);
+}
+
+.logo span{
+    border-radius: 50%;
+    width: 1.8rem;
+    height: 1.8rem;
+    background-color: var(--darkblue);
+}
+
+
+
