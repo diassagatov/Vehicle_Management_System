@@ -10,7 +10,7 @@ import FuelPage from "./FuelPage";
 const App = () => {
   ReactSession.setStoreType("localStorage");
   const [status, setStatus] = useState(ReactSession.get("loggedIn"));
-  const [userType, setUserType] = useState("Admin");
+  const [userType, setUserType] = useState("Fuel");
 
   useEffect(() => {
     if (ReactSession.get("loggedIn") == false) {
