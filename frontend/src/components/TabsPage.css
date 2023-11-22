@@ -35,5 +35,10 @@
     background-color: var(--darkblue);
 }
 
+.dropdownCustom{
+    position: relative;
+    z-index: 1000;
+}
+
 
 
