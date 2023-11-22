@@ -19,11 +19,11 @@ const AddUser = (props) => {
 
     try {
       const response = await fetch(
-        "http://daniyarkoishin.pythonanywhere.com/users/",
+        'http://daniyarkoishin.pythonanywhere.com/users/',
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${props.token}`,
           },
           body: JSON.stringify(formData),
