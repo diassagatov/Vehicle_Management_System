@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const AddVehicle = (props) => {
   const [vehicleData, setVehicleData] = useState({
-    MAKE: "",
-    MODEL: "",
-    YEAR: "",
-    LIC_PLATE: "",
-    DRIVER: "",
-    TYPE: "",
-    MILEAGE: "",
-    USED_TIME: "",
-    SITTING_CAP: "",
-    PRICE: "",
+    MAKE: '',
+    MODEL: '',
+    YEAR: 'null',
+    LIC_PLATE: '',
+    DRIVER: '',
+    TYPE: '',
+    MILEAGE: 'null',
+    USED_TIME: 'null',
+    SITTING_CAP: 'null',
+    PRICE: 'null',
   });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,11 +28,11 @@ const AddVehicle = (props) => {
 
     try {
       const response = await fetch(
-        "https://daniyarkoishin.pythonanywhere.com/vehicles/",
+        'https://daniyarkoishin.pythonanywhere.com/vehicles/',
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${props.token}`,
           },
           body: JSON.stringify(vehicleData),
@@ -39,17 +40,42 @@ const AddVehicle = (props) => {
       );
 
       if (response.ok) {
+        // Clear form fields
+        setVehicleData({
+          MAKE: '',
+          MODEL: '',
+          YEAR: '',
+          LIC_PLATE: '',
+          DRIVER: '',
+          TYPE: '',
+          MILEAGE: '',
+          USED_TIME: '',
+          SITTING_CAP: '',
+          PRICE: '',
+        });
+
         // Handle success, e.g., show a success message or redirect
-        console.log("Vehicle created successfully!");
+        console.log('Vehicle created successfully!');
       } else {
-        // Handle errors, e.g., show an error message
-        console.error("Error creating vehicle:", response.statusText);
+        // Log error details
+        const errorData = await response.json();
+        console.error(
+          'Error creating vehicle:',
+          response.statusText,
+          errorData
+        );
+
+        // Set error message
+        setErrorMessage(errorData.message || 'An error occurred');
       }
     } catch (error) {
-      console.error("Error creating vehicle:", error.message);
+      // Log network error details
+      console.error('Error creating vehicle:', error);
+
+      // Set error message
+      setErrorMessage('An error occurred');
     }
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
@@ -88,6 +114,7 @@ const AddVehicle = (props) => {
         </label>
         <input
           type="number"
+          min="0"
           className="form-control"
           id="year"
           name="YEAR"
@@ -118,6 +145,7 @@ const AddVehicle = (props) => {
         </label>
         <input
           type="number"
+          min="0"
           className="form-control"
           id="driver"
           name="DRIVER"
@@ -148,6 +176,7 @@ const AddVehicle = (props) => {
         </label>
         <input
           type="number"
+          min="0"
           step="0.1"
           className="form-control"
           id="mileage"
@@ -179,6 +208,7 @@ const AddVehicle = (props) => {
         </label>
         <input
           type="number"
+          min="0"
           className="form-control"
           id="sittingCap"
           name="SITTING_CAP"
@@ -194,6 +224,7 @@ const AddVehicle = (props) => {
         </label>
         <input
           type="number"
+          min="0"
           step="0.01"
           className="form-control"
           id="price"
@@ -207,6 +238,7 @@ const AddVehicle = (props) => {
       <button type="submit" className="btn btn-primary">
         Create Vehicle
       </button>
+      {/* {errorMessage && <div className="error-message">{errorMessage}</div>} */}
     </form>
   );
 };
