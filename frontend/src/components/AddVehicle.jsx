@@ -9,7 +9,7 @@ const AddVehicle = (props) => {
     DRIVER: '',
     TYPE: '',
     MILEAGE: 'null',
-    USED_TIME: 'null',
+    USED_TIME: '0',
     SITTING_CAP: 'null',
     PRICE: 'null',
   });
@@ -49,7 +49,6 @@ const AddVehicle = (props) => {
           DRIVER: '',
           TYPE: '',
           MILEAGE: '',
-          USED_TIME: '',
           SITTING_CAP: '',
           PRICE: '',
         });
@@ -187,20 +186,7 @@ const AddVehicle = (props) => {
         />
       </div>
 
-      <div className="mb-3">
-        <label htmlFor="usedTime" className="form-label">
-          Used Time
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="usedTime"
-          name="USED_TIME"
-          value={vehicleData.USED_TIME}
-          onChange={handleChange}
-          required
-        />
-      </div>
+
 
       <div className="mb-3">
         <label htmlFor="sittingCap" className="form-label">
