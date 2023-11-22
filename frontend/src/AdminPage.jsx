@@ -1,12 +1,14 @@
+import { useState } from "react";
 import Tab from "react-bootstrap/Tab";
-import DataTable from "./components/DataTable";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import "./components/TabsPage.css";
-import { useState } from "react";
+import DataTable from "./components/DataTable";
 import AddVehicle from "./components/AddVehicle";
+import AddUser from "./components/AddUser";
+import "./components/TabsPage.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const TabsPage = (props) => {
   const [activeKey, setActiveKey] = useState("1");
@@ -84,8 +86,12 @@ const TabsPage = (props) => {
               link="https://daniyarkoishin.pythonanywhere.com/vehicles/"
             />
           </Tab.Pane>
+
+          <Tab.Pane className="tabContent p-sm-1 p-md-2" eventKey="4">
+            <AddUser token={props.token} />
+          </Tab.Pane>
           <Tab.Pane className="tabContent p-sm-1 p-md-2" eventKey="8">
-            <AddVehicle />
+            <AddVehicle token={props.token} />
           </Tab.Pane>
         </Tab.Content>
       </Tab.Container>
