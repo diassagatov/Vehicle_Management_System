@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./DataTable.css";
-
+import { Modal, Button } from "react-bootstrap";
 const DataTable = (props) => {
   const [data, setData] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
+  const handleShow = () => setShowModal(true);
+  const handleClose = () => setShowModal(false);
   useEffect(() => {
     const fetchData = async () => {
       if (props.token) {
@@ -27,7 +30,7 @@ const DataTable = (props) => {
       }
     };
     fetchData();
-  }, [props.token]);
+  }, [props.activeKey]);
 
   return (
     <div className="elementContainer">
@@ -45,8 +48,46 @@ const DataTable = (props) => {
             <tbody>
               {data.map((record, recordIndex) => (
                 <tr key={recordIndex}>
-                  {Object.values(record).map((value, index) => (
-                    <td key={index}>{value}</td>
+                  {Object.entries(record).map(([key, value], index) => (
+                    <td key={index}>
+                      {key !== "replaced_part_image" &&
+                      key !== "before_image" &&
+                      key !== "after_image" &&
+                      key !== "image" ? (
+                        value
+                      ) : (
+                        <div>
+                          <img
+                            src={value}
+                            alt={""}
+                            style={{
+                              cursor: "pointer",
+                              height: "150px",
+                              width: "150px",
+                            }}
+                            onClick={handleShow}
+                          />
+
+                          <Modal
+                            style={{ marginLeft: "50px" }}
+                            show={showModal}
+                            onHide={handleClose}
+                          >
+                            <Modal.Body>
+                              <img
+                                src={value}
+                                alt=""
+                                style={{
+                                  width: "50%",
+                                  display: "block",
+                                  margin: "auto",
+                                }}
+                              />
+                            </Modal.Body>
+                          </Modal>
+                        </div>
+                      )}
+                    </td>
                   ))}
                 </tr>
               ))}

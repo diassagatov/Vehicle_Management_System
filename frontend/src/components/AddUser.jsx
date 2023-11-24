@@ -10,7 +10,7 @@ const AddUser = (props) => {
     gov_id: "",
     phone: "",
     address: "",
-    position: "",
+    position: props.position,
     password: "",
   });
 
@@ -19,20 +19,36 @@ const AddUser = (props) => {
 
     try {
       const response = await fetch(
-        'http://daniyarkoishin.pythonanywhere.com/users/',
+        "http://daniyarkoishin.pythonanywhere.com/users/",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${props.token}`,
           },
           body: JSON.stringify(formData),
         }
       );
 
+      console.log(JSON.stringify(formData));
+
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
+
+      setFormData({
+        first_name: "",
+        middle_name: "",
+        last_name: "",
+        email: "",
+        gov_id: "",
+        phone: "",
+        address: "",
+        position: props.position,
+        password: "",
+      });
+
+      alert("Success");
 
       const data = await response.json();
       console.log("Response:", data);
@@ -53,7 +69,7 @@ const AddUser = (props) => {
 
   return (
     <div>
-      <h1>User Form</h1>
+      <h1>Adding {props.position}</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="first_name" className="form-label">
@@ -155,21 +171,6 @@ const AddUser = (props) => {
             id="address"
             name="address"
             value={formData.address}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="position" className="form-label">
-            Position
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="position"
-            name="position"
-            value={formData.position}
             onChange={handleChange}
             required
           />

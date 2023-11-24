@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Table from 'react-bootstrap/Table';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './DataTable.css';
-import ButtonFuel from './ButtonFuel';
+import React, { useEffect, useState } from "react";
+import Table from "react-bootstrap/Table";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./DataTable.css";
+import ButtonFuel from "./ButtonFuel";
 
 const FuelingDataTable = (props) => {
   const [data, setData] = useState(null);
+  const [reload, setReload] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,21 +15,21 @@ const FuelingDataTable = (props) => {
           const response = await fetch(props.link, {
             headers: {
               Authorization: `Bearer ${props.token}`,
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
           });
           const result = await response.json();
           setData(result);
         } catch (error) {
-          console.error('Error fetching data:', error);
-          console.error('Error fetching data:', error);
-          console.error('Error status:', response.status);
-          console.error('Error response:', await response.text());
+          console.error("Error fetching data:", error);
+          console.error("Error fetching data:", error);
+          console.error("Error status:", response.status);
+          console.error("Error response:", await response.text());
         }
       }
     };
     fetchData();
-  }, []);
+  }, [reload]);
 
   return (
     <div className="elementContainer">
@@ -51,6 +52,8 @@ const FuelingDataTable = (props) => {
                       <td key={index}>{value}</td>
                     ))}
                     <ButtonFuel
+                      reload={reload}
+                      setReload={setReload}
                       record={record}
                       token={props.token}
                     />

@@ -1,17 +1,17 @@
-import Tab from 'react-bootstrap/Tab';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import './components/TabsPage.css';
-import { useState } from 'react';
-import AddVehicle from './components/AddVehicle';
-import FuelFormPage from './components/FuelFormPage';
-import DataTable from './components/DataTable';
-import FuelingDataTable from './components/FuelingDataTable';
+import Tab from "react-bootstrap/Tab";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import "./components/TabsPage.css";
+import { useState } from "react";
+import AddVehicle from "./components/AddVehicle";
+import FuelFormPage from "./components/FuelFormPage";
+import DataTable from "./components/DataTable";
+import FuelingDataTable from "./components/FuelingDataTable";
 
 const FuelPage = (props) => {
-  const [activeKey, setActiveKey] = useState('1');
+  const [activeKey, setActiveKey] = useState("1");
   const [expanded, setExpanded] = useState(false);
 
   const handleTabChange = (key) => {
@@ -39,10 +39,10 @@ const FuelPage = (props) => {
           />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link onClick={() => handleTabChange('1')}>
+              <Nav.Link onClick={() => handleTabChange("1")}>
                 Fueling Requests
               </Nav.Link>
-              <Nav.Link onClick={() => handleTabChange('2')}>
+              <Nav.Link onClick={() => handleTabChange("2")}>
                 Fueling Reports
               </Nav.Link>
 
@@ -59,6 +59,7 @@ const FuelPage = (props) => {
               token={props.token}
               title="Fuels Requests"
               link="https://daniyarkoishin.pythonanywhere.com/fuelrequests/"
+              activeKey={activeKey}
             />
           </Tab.Pane>
           <Tab.Pane className="tabContent p-sm-1 p-md-2" eventKey="2">
@@ -66,6 +67,7 @@ const FuelPage = (props) => {
               token={props.token}
               title="Fueling Records"
               link="https://daniyarkoishin.pythonanywhere.com/fuelingrecords/"
+              activeKey={activeKey}
             />
           </Tab.Pane>
         </Tab.Content>

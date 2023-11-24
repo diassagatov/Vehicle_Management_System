@@ -14,7 +14,6 @@
     font-family: 'Kulim Park', sans-serif;
     overflow: auto;
     font-size: 1em;
-    max-height: 600px;
 }
 
 .custom-colored-table td {
@@ -35,5 +34,7 @@ h1{
     font-family: 'Kulim Park', sans-serif;
     font-weight: 600;
 }
+
+
 
 

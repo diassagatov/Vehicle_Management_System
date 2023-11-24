@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const AddVehicle = (props) => {
   const [vehicleData, setVehicleData] = useState({
-    MAKE: '',
-    MODEL: '',
-    YEAR: 'null',
-    LIC_PLATE: '',
-    DRIVER: '',
-    TYPE: '',
-    MILEAGE: 'null',
-    USED_TIME: '0',
-    SITTING_CAP: 'null',
-    PRICE: 'null',
+    MAKE: "",
+    MODEL: "",
+    YEAR: "null",
+    LIC_PLATE: "",
+    TYPE: "",
+    MILEAGE: "null",
+    USED_TIME: "0",
+    SITTING_CAP: "null",
+    PRICE: "null",
   });
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,11 +27,11 @@ const AddVehicle = (props) => {
 
     try {
       const response = await fetch(
-        'https://daniyarkoishin.pythonanywhere.com/vehicles/',
+        "https://daniyarkoishin.pythonanywhere.com/vehicles/",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${props.token}`,
           },
           body: JSON.stringify(vehicleData),
@@ -42,37 +41,36 @@ const AddVehicle = (props) => {
       if (response.ok) {
         // Clear form fields
         setVehicleData({
-          MAKE: '',
-          MODEL: '',
-          YEAR: '',
-          LIC_PLATE: '',
-          DRIVER: '',
-          TYPE: '',
-          MILEAGE: '',
-          SITTING_CAP: '',
-          PRICE: '',
+          MAKE: "",
+          MODEL: "",
+          YEAR: "",
+          LIC_PLATE: "",
+          TYPE: "",
+          MILEAGE: "",
+          SITTING_CAP: "",
+          PRICE: "",
         });
 
         // Handle success, e.g., show a success message or redirect
-        console.log('Vehicle created successfully!');
+        console.log("Vehicle created successfully!");
       } else {
         // Log error details
         const errorData = await response.json();
         console.error(
-          'Error creating vehicle:',
+          "Error creating vehicle:",
           response.statusText,
           errorData
         );
 
         // Set error message
-        setErrorMessage(errorData.message || 'An error occurred');
+        setErrorMessage(errorData.message || "An error occurred");
       }
     } catch (error) {
       // Log network error details
-      console.error('Error creating vehicle:', error);
+      console.error("Error creating vehicle:", error);
 
       // Set error message
-      setErrorMessage('An error occurred');
+      setErrorMessage("An error occurred");
     }
   };
   return (
@@ -139,22 +137,6 @@ const AddVehicle = (props) => {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="driver" className="form-label">
-          Driver ID
-        </label>
-        <input
-          type="number"
-          min="0"
-          className="form-control"
-          id="driver"
-          name="DRIVER"
-          value={vehicleData.DRIVER}
-          onChange={handleChange}
-          required
-        />
-      </div>
-
-      <div className="mb-3">
         <label htmlFor="type" className="form-label">
           Type
         </label>
@@ -185,8 +167,6 @@ const AddVehicle = (props) => {
           required
         />
       </div>
-
-
 
       <div className="mb-3">
         <label htmlFor="sittingCap" className="form-label">

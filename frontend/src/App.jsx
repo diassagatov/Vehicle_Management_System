@@ -9,24 +9,51 @@ import FuelPage from "./FuelPage";
 
 const App = () => {
   ReactSession.setStoreType("localStorage");
-  const [status, setStatus] = useState(ReactSession.get('loggedIn'));
-  const [userType, setUserType] = useState("Fuel");
+  const [status, setStatus] = useState(ReactSession.get("loggedIn"));
+  const [userType, setUserType] = useState("");
 
   useEffect(() => {
+    //ReactSession.set("loggedIn", true);
     if (ReactSession.get("loggedIn") == false) {
       setStatus(false);
-    };
-  }, []);
+    }
+    fetchData();
+  }, [status]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://daniyarkoishin.pythonanywhere.com/user_by_token/",
+        {
+          method: "GET", // Explicitly set the method to GET
+          headers: {
+            Authorization: `Bearer ${ReactSession.get("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const result = await response.json();
+      setUserType(result["position"]);
+      console.log(userType);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   function receiveDataFromChild(data) {
     ReactSession.set("loggedIn", true);
     ReactSession.set("token", data);
+
+    fetchData();
     setStatus(true);
-    console.log("recieve worked" + ReactSession.get("loggedIn"));
+    setUserType(ReactSession.get("type"));
+    console.log("recieve worked" + ReactSession.get("token"));
   }
 
   function logOutHandle() {
+    ReactSession.set("type", "");
     ReactSession.set("loggedIn", false);
+    ReactSession.set("type", "");
     setStatus(false);
     console.log("logout worked");
   }
@@ -39,7 +66,7 @@ const App = () => {
     );
   } else {
     switch (userType) {
-      case "Admin":
+      case "Administration Staff":
         return (
           <AdminPage logOut={logOutHandle} token={ReactSession.get("token")} />
         );
@@ -47,11 +74,11 @@ const App = () => {
         return (
           <DriverPage logOut={logOutHandle} token={ReactSession.get("token")} />
         );
-      case "Fuel":
+      case "Fueling Person":
         return (
           <FuelPage logOut={logOutHandle} token={ReactSession.get("token")} />
         );
-      case "Maint":
+      case "Maintenance Person":
         return (
           <MaintPage logOut={logOutHandle} token={ReactSession.get("token")} />
         );
