@@ -1,0 +1,11 @@
+<img width="555" alt="Screen Shot 2024-01-07 at 19 17 21" src="https://github.com/diassagatov/vms_project/assets/94863265/9f7a68d1-b10d-4568-9726-d49759f542cb">
+<img width="545" alt="Screen Shot 2024-01-07 at 19 16 01" src="https://github.com/diassagatov/vms_project/assets/94863265/eb7b12b7-b41f-4bc9-8288-818c40d81341">
+<img width="507" alt="Screen Shot 2024-01-07 at 19 16 09" src="https://github.com/diassagatov/vms_project/assets/94863265/3c16f6b6-3b6d-407f-8373-6e36ee2098de">
+<img width="540" alt="Screen Shot 2024-01-07 at 19 16 18" src="https://github.com/diassagatov/vms_project/assets/94863265/ef696f27-de47-46d3-b3a7-d4c686f33b16">
+<img width="507" alt="Screen Shot 2024-01-07 at 19 16 25" src="https://github.com/diassagatov/vms_project/assets/94863265/5d5ddf5d-7d98-44af-8392-5c66d6f1bd93">
+<img width="552" alt="Screen Shot 2024-01-07 at 19 16 33" src="https://github.com/diassagatov/vms_project/assets/94863265/b63c3235-1013-4f7d-8ec1-6e03bff837d5">
+<img width="529" alt="Screen Shot 2024-01-07 at 19 16 41" src="https://github.com/diassagatov/vms_project/assets/94863265/bf414df4-fc69-4edf-a6a3-e2da12d0cb00">
+<img width="555" alt="Screen Shot 2024-01-07 at 19 16 49" src="https://github.com/diassagatov/vms_project/assets/94863265/30422c5d-a905-41c5-b165-c323f800bc7f">
+<img width="519" alt="Screen Shot 2024-01-07 at 19 16 56" src="https://github.com/diassagatov/vms_project/assets/94863265/7f9a7e76-9cec-4fcc-a28d-2efe15c76673">
+<img width="537" alt="Screen Shot 2024-01-07 at 19 17 05" src="https://github.com/diassagatov/vms_project/assets/94863265/f27d6383-f95d-46af-bcfe-db07440f22e7">
+<img width="532" alt="Screen Shot 2024-01-07 at 19 17 12" src="https://github.com/diassagatov/vms_project/assets/94863265/5ff6b0c8-65f6-4241-9f0b-44b24c095a03">
